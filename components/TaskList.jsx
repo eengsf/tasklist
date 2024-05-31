@@ -19,7 +19,13 @@ const getTask = async () => {
 };
 
 export default async function TaskList() {
-  const { tasks } = await getTask();
+  const data = await getTask();
+
+  if (!data || !data.tasks) {
+    return <div>Failed to load tasks</div>;
+  }
+
+  const { tasks } = data;
 
   return (
     <>
