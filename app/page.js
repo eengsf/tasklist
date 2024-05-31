@@ -1,9 +1,9 @@
-import Image from "next/image";
+import TaskList from "@/components/TaskList";
 
 export default function Home() {
   return (
     <>
-      <h1>fuad</h1>
+      <TaskList />
     </>
   );
 }
