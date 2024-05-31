@@ -14,10 +14,9 @@ export default function EditTaskForm({ id, title, description }) {
     try {
       const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/${id}`, {
         method: "PUT",
-
+        cache: "no-store",
         headers: {
           "Content-type": "application/json",
-          "Chache-Control": "no-store",
         },
         body: JSON.stringify({ newTitle, newDescription }),
       });

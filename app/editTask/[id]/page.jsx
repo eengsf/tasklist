@@ -3,9 +3,7 @@ import EditTaskForm from "@/components/EditTaskForm";
 const getTaskById = async (id) => {
   try {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/${id}`, {
-      headers: {
-        "Chache-Control": "no-store",
-      },
+      cache: "no-store",
     });
     if (!res.ok) {
       throw new Error("Failed to fetch task");

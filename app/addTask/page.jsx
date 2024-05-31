@@ -19,9 +19,9 @@ export default function addTask() {
     try {
       const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api`, {
         method: "POST",
+        cache: "no-store",
         headers: {
           "Content-type": "application/json",
-          "Chache-Control": "no-store",
         },
         body: JSON.stringify({ title, description }),
       });
