@@ -1,6 +1,8 @@
+"use client";
 import Link from "next/link";
 import RemoveBtn from "./RemoveBtn";
 import { HiPencilAlt } from "react-icons/hi";
+import { useEffect, useState } from "react";
 
 const getTask = async () => {
   try {
@@ -17,13 +19,21 @@ const getTask = async () => {
 };
 
 export default async function TaskList() {
-  const data = await getTask();
+  const [data, setData] = useState({});
 
-  if (!data || !data.tasks) {
-    return <div>Failed to load tasks</div>;
-  }
+  const loadTasks = async () => {
+    const dt = await getTask();
+    setData(dt);
+  };
+
+  useEffect(() => {
+    loadTasks();
+  }, []);
 
   const { tasks } = data;
+  if (!tasks) {
+    return <div>Load tasks...</div>;
+  }
 
   return (
     <>
